@@ -6,13 +6,13 @@
   margin-left: 0;
   list-style: none;
   > li {
-    margin-bottom: $spacing-unit;
+    margin-bottom: $grid-gutters;
   }
 }
 
 .post-meta {
-  font-size: $small-font-size;
-  color: $grey-color;
+  font-size: $font-size-small;
+  color: $gray-base;
 }
 
 .post-link {
@@ -22,35 +22,35 @@
 
 /* Posts */
 .post-header {
-  margin-bottom: $spacing-unit;
+  margin-bottom: $grid-gutters;
 }
 
 .post-title {
   font-size: 42px;
   letter-spacing: -1px;
   line-height: 1;
-  @media screen and (width <= $on-laptop) {
+  @include respond-to("medium") {
     font-size: 36px;
   }
 }
 
 .post-content {
-  margin-bottom: $spacing-unit;
+  margin-bottom: $grid-gutters;
   h2 {
     font-size: 32px;
-    @media screen and (width <= $on-laptop) {
+    @include respond-to("medium") {
       font-size: 28px;
     }
   }
   h3 {
     font-size: 26px;
-    @media screen and (width <= $on-laptop) {
+    @include respond-to("medium") {
       font-size: 22px;
     }
   }
   h4 {
     font-size: 20px;
-    @media screen and (width <= $on-laptop) {
+    @include respond-to("medium") {
       font-size: 18px;
     }
   }

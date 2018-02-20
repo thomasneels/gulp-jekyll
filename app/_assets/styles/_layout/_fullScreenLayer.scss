@@ -1,0 +1,15 @@
+.FullScreenLayer{
+	&-section{
+		height: 100vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	&-mainSection{
+		background: url('../../assets/images/select-background.jpg') center / cover;
+	}
+	&-hero{
+		text-align: center;
+		color: $white;
+	}
+}

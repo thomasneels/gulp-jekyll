@@ -1,0 +1,63 @@
+.Navigation{
+	line-height: 56px;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	&-list{
+	}
+	&-link{
+		line-height: $line-height-base;
+		color: $gray-base;
+	}
+}
+
+.site-nav {
+	line-height: 56px;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+
+	.menu-icon {
+		display: none;
+	}
+
+	.page-link {
+		line-height: $line-height-base;
+		color: $gray-base;
+
+		/* Gaps between nav items, but not on the first one */
+		&:not(:first-child) {
+			margin-left: 20px;
+		}
+	}
+
+	@include respond-to("small") {
+		position: absolute;
+		top: 9px;
+		right: 30px;
+		text-align: right;
+		border: 1px solid $gray-400;
+		border-radius: 5px;
+		background-color: $color-brand;
+
+		.menu-icon {
+			display: block;
+			width: 36px;
+			height: 26px;
+			padding-top: 10px;
+			float: right;
+			line-height: 0;
+			text-align: center;
+
+			> svg {
+				width: 18px;
+				height: 15px;
+			}
+		}
+
+		.page-link {
+			display: block;
+			padding: 5px 10px;
+		}
+	}
+}
