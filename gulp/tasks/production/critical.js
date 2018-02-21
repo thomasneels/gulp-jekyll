@@ -3,7 +3,7 @@ const critical   = require('critical').stream;
 const gulp       = require('gulp');
 
 // Page dimensions for critical CSS
-var pageDimensions = [{
+const pageDimensions = [{
 		width: 320,
 		height: 480
 	}, {
@@ -18,7 +18,7 @@ var pageDimensions = [{
 	}];
 
 gulp.task('styles:critical:home', () => {
-  return gulp.src('build/index.html')
+	return gulp.src('build/index.html')
     .pipe(critical({
 		base: './',
 		css: ['build/assets/css/main.css'],

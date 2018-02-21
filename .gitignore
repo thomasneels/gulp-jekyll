@@ -4,3 +4,5 @@ vendor
 app/_bower_components
 .DS_Store
 */.DS_Store
+.sass-cache
+package-lock.json

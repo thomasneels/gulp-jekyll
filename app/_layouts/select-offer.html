@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+{% include head.html %}
+
+<body>
+
+	<div class="MainWrapper">
+
+		{% include header.html %}
+
+		<div class="FullScreenLayer">
+			<section class="FullScreenLayer-section FullScreenLayer-mainSection">
+				<div class="FullScreenLayer-hero">
+					<h1>{{ page.hero }}</h1>
+				</div>
+			</section>
+			<section class="FullScreenLayer-section">
+				<div class="container">
+					{{ content }}
+				</div>
+			</section>
+		</div>
+
+		{% include footer.html %}
+	</div>
+</body>
+
+</html>

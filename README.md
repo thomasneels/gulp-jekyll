@@ -1,10 +1,11 @@
 # gulp-jekyll
-
-Jekyll + Gulp.js + BrowserSync + PostCSS + Stylelint
+Starter for jekyll using gulp
+Jekyll + Gulp.js + BrowserSync + Scss + Stylelint
+Base on michaelx/gulp-jekyll repository
 
 ## Features
 
-- PostCSS with PreCSS, Autoprefixer, CSS MQPacker, cssnano, and of course sourcemaps for development.
+- Scss, Autoprefixer, CSS MQPacker, cssnano, and of course sourcemaps for development.
 - UnCSS for production.
 - Jekyll build and rebuild with BrowserSync.
 - Browserify or just gulp-concat, as you prefer.
@@ -17,14 +18,6 @@ Jekyll + Gulp.js + BrowserSync + PostCSS + Stylelint
 - Asset file revisions.
 - WebP image generation.
 - Deployment with rsync or [s3_website](https://github.com/laurilehmijoki/s3_website).
-
-### What’s Coming Next
-
-- User-guide
-- Modularizing the default Jekyll theme, to make use of the new 7-1 pattern
-- s3 preview task
-- s3 publish task
-- JSON-LD generator
 
 ## Installation
 
@@ -98,4 +91,4 @@ styles/
 ## Credits
 
 - gulp-jekyll started out as a fork of Stefan Imhoff’s wonderful [Gulp.js series](https://github.com/kogakure/gulp-tutorial).
-- [Michael Xander](http://michaelxander.com)
+- [Michael Xander](http://michaelxander.com)# gulp-jekyll

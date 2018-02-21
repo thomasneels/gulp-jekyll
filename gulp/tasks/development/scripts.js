@@ -2,6 +2,7 @@ var config     = require('../../config').scripts;
 
 var gulp       = require('gulp');
 var concat     = require('gulp-concat');
+var babel      = require('gulp-babel');
 var sourcemaps = require('gulp-sourcemaps');
 
 
@@ -11,6 +12,9 @@ gulp.task('scripts', function() {
   return gulp.src(config.src)
     .pipe(sourcemaps.init())
       .pipe(concat(config.outputName))
+	  .pipe(babel({
+        presets: ['env']
+	  }))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(config.dest));
 });
