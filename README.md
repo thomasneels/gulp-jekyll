@@ -5,7 +5,7 @@ Base on michaelx/gulp-jekyll repository
 
 ## Features
 
-- PostCSS with Scss, Autoprefixer, CSS MQPacker, cssnano, and of course sourcemaps for development.
+- Scss, Autoprefixer, CSS MQPacker, cssnano, and of course sourcemaps for development.
 - UnCSS for production.
 - Jekyll build and rebuild with BrowserSync.
 - Browserify or just gulp-concat, as you prefer.
