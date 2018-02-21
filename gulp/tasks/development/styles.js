@@ -2,6 +2,8 @@ var config       = require('../../config').styles;
 
 var gulp         = require('gulp');
 var postcss      = require('gulp-postcss');
+var sass         = require('gulp-sass');
+// var sass 		 = require('gulp-ruby-sass');
 var precss       = require('precss');
 var autoprefixer = require('autoprefixer');
 var mqpacker     = require('css-mqpacker');
@@ -36,7 +38,19 @@ gulp.task('styles', function() {
       errorHandler: onError
     }))
     .pipe(sourcemaps.init())
-    .pipe(postcss(processors))
+    // .pipe(postcss(processors))
+	// .pipe(autoprefixer(config.options.autoprefixer))  // test
+	// .pipe(mqpacker(config.options.mqpacker)) // test
+    .pipe(sass())
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(config.dest));
+
+
+  // return sass(config.src, {sourcemap: true})
+	// .on('error', sass.logError)
+	// .pipe(sourcemaps.write('maps', {
+  //           includeContent: false,
+  //           sourceRoot: config.src
+  //       }))
+  //   .pipe(gulp.dest(config.dest));
 });

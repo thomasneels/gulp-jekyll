@@ -53,13 +53,14 @@ module.exports = {
       src + '/_data/**/*.{json,yml,csv}',
       src + '/_includes/**/*.{html,xml}',
       src + '/_layouts/*.html',
+      src + '/_pages/*.{html,markdown}',
       src + '/_locales/*.yml',
       src + '/_plugins/*.rb',
       src + '/_posts/*.{markdown,md}',
       src + '/**/*.{html,markdown,md,yml,json,txt,xml}',
       src + '/*'
     ],
-    styles:  srcAssets + '/styles/**/*.css',
+    styles:  srcAssets + '/styles/**/*.scss',
     scripts: srcAssets + '/javascripts/**/*.js',
     images:  srcAssets + '/images/**/*',
     sprites: srcAssets + '/images/**/*.png',
@@ -88,14 +89,14 @@ module.exports = {
 
   // CSS
   styles: {
-    src:  srcAssets + '/styles/*.css',
+    src:  srcAssets + '/styles/*.scss',
     dest: developmentAssets + '/css',
     options: {
       precss: {},
       autoprefixer: {
         browsers: [
           'last 2 versions',
-          'ie 9',
+          'ie 11',
           'android 4'
         ],
         cascade: true
@@ -377,6 +378,11 @@ module.exports = {
       exclude: ['.DS_Store'],
       include: []
     }
+},
+
+  // git to deploy on github
+  gitDeploy: {
+    src: src + '/**'
   }
 
 };
