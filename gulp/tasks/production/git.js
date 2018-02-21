@@ -48,35 +48,6 @@ gulp.task('bump', () => {
 		});
 });
 
-// Récupération du nom de l'application à build/développer
-function getAppName() {
-	var build_name;
-
-	if (app_specific && conf.specific && conf.specific[app_specific]) {
-		build_name = conf.specific[app_specific].build_name;
-	}
-
-	if (!build_name) {
-		logger.error('Il manque le "build_name" dans la conf (build_conf.json)');
-		return;
-	}
-
-	return build_name;
-}
-
-function getBranch() {
-	git.revParse({args:' --abbrev-ref HEAD'}, function (err, branch) {
-		// console.log('current git branch: ' + branch);  // return "develop" or "master"
-		return branch;
-	});
-};
-
-function getVersion() {
-	var versionArr = package_json.version.split('.');
-	// console.log(`package_json.version : ${version}`);
-	return versionArr; // return 0.1.0
-};
-
 getVersion = () => JSON.parse(fs.readFileSync('./package.json').toString()).version;
 
 gulp.task('checkout', function(){
@@ -88,7 +59,7 @@ gulp.task('checkout', function(){
 
 // push on the new branch
 gulp.task('push', function(){
-  git.push(`release/v${getVersion()}`, {args: " --set-upstream"}, function (err) {
+  git.push('origin', {args: " HEAD"}, function (err) {
     if (err) throw err;
   });
 });

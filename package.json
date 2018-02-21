@@ -1,11 +1,11 @@
 {
   "name": "gulp-jekyll",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Jekyll Starter",
   "author": "Thomas Neels",
   "repository": "thomasneels/gulp-jekyll",
   "scripts": {
-    "release": "gulp bump && gulp checkout && gulp push"
+    "release": "gulp bump && rm -f .git/index.lock && gulp checkout && gulp push"
   },
   "browser": {
     "jquery": "./app/_bower_components/jquery/dist/jquery.js"
