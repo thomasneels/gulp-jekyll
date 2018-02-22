@@ -17,8 +17,8 @@ const pageDimensions = [{
 		height: 1280
 	}];
 
-gulp.task('styles:critical:home', () => {
-	return gulp.src('build/index.html')
+	gulp.task('styles:critical:home', () => {
+	return gulp.src('build/development/index.html')
     .pipe(critical({
 		base: './',
 		css: ['build/assets/css/main.css'],

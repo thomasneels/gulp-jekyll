@@ -14,27 +14,12 @@
 		head = doc.head || doc.getElementsByTagName( "head" )[ 0 ],
 		// this references a meta tag's name whose content attribute should define the path to the full CSS file for the site
 		fullCSSKey = "fullcss",
-		// this references a meta tag's name whose content attribute should define the path to the enhanced JS file for the site (delivered to qualified browsers)
-		fullJSKey = "fulljs",
 		// this references a meta tag's name whose content attribute should define the path to the custom fonts file for the site (delivered to qualified browsers)
 		fontsKey = "fonts",
 		// classes to be added to the HTML element in qualified browsers
 		htmlClasses = [ "enhanced" ];
 
 	/* Some commonly used functions - delete anything you don't need! */
-
-	// loadJS: load a JS file asynchronously. Included from https://github.com/filamentgroup/loadJS/
-	function loadJS( src ){
-		var ref = window.document.getElementsByTagName( "script" )[ 0 ];
-		var script = window.document.createElement( "script" );
-		script.src = src;
-		script.async = true;
-		ref.parentNode.insertBefore( script, ref );
-		return script;
-	}
-
-	// expose it
-	enhance.loadJS = loadJS;
 
 	// loadCSS: load a CSS file asynchronously. Included from https://github.com/filamentgroup/loadCSS/
 	function loadCSS( href, before, media ){
@@ -95,38 +80,6 @@
 	// expose it
 	enhance.getMeta = getMeta;
 
-	// cookie function from https://github.com/filamentgroup/cookie/
-	function cookie( name, value, days ){
-    var expires;
-		// if value is undefined, get the cookie value
-		if( value === undefined ){
-			var cookiestring = "; " + window.document.cookie;
-			var cookies = cookiestring.split( "; " + name + "=" );
-			if ( cookies.length == 2 ){
-				return cookies.pop().split( ";" ).shift();
-			}
-			return null;
-		}
-		else {
-			// if value is a false boolean, we'll treat that as a delete
-			if( value === false ){
-				days = -1;
-			}
-			if ( days ) {
-				var date = new Date();
-				date.setTime( date.getTime() + ( days * 24 * 60 * 60 * 1000 ) );
-				expires = "; expires="+date.toGMTString();
-			}
-			else {
-				expires = "";
-			}
-			window.document.cookie = name + "=" + value + expires + "; path=/";
-		}
-	}
-
-	// expose it
-	enhance.cookie = cookie;
-
 	/* Enhancements for all browsers - qualified or not */
 
 	/* Load non-critical CSS async on first visit:
@@ -136,10 +89,8 @@
 		Once the cookie is set, the full CSS is assumed to be in cache, and the server-side templates should reference the full CSS directly from the head of the page with a link element, in place of inline critical styles.
 		*/
 	var fullCSS = getMeta( fullCSSKey );
-	if( fullCSS && !cookie( fullCSSKey ) ){
+	if( fullCSS ){
 		loadCSS( fullCSS.content );
-		// set cookie to mark this file fetched
-		cookie( fullCSSKey, "true", 7 );
 	}
 
 	/* Enhancements for qualified browsers - "Cutting the Mustard"
@@ -157,33 +108,6 @@
 	// Add scoping classes to HTML element: useful for upgrading the presentation of elements that will be enhanced with JS behavior
 	docElem.className += " " + htmlClasses.join(" ");
 
-	/* Load JavaScript enhancements in one request.
-		Your DOM framework and dependent component scripts should be concatenated and minified into one file that we'll load dynamically (keep that file as small as possible!)
-		A meta tag with a name matching the fullJSKey should have a content attribute referencing the path to this JavaScript file.
-		*/
-	var fullJS = getMeta( fullJSKey );
-	// Add scoping classes to HTML element
-	function addEnhanceClass(){
-		docElem.className += " " + docClasses.join(" ");
-	}
-
-	function removeEnhanceClass(){
-		docElem.className = docElem.className.replace( docClasses.join(" "), " " );
-	}
-
-	addEnhanceClass();
-
-	// load global js on any template
-	if( fullJS ){
-		var script = loadJS( fullJS.content );
-		var fallback = setTimeout( removeEnhanceClass, 8000 );
-
-		script.onload = function(){
-			clearTimeout( fallback );
-			// just in case it was removed already (we can't cancel this request so it might arrive any time)
-			addEnhanceClass();
-		};
-	}
 
 	/* Load custom fonts
 		We prefer to load fonts asynchronously so that they do not block page rendering.

@@ -127,7 +127,7 @@ module.exports = {
     dest: developmentAssets + '/js',
     outputName: 'main.js',
     standaloneFiles: [
-      // srcAssets + '/javascripts/example-vendor.js'
+      srcAssets + '/javascripts/enhance.js'
     ]
   },
 
@@ -294,10 +294,10 @@ module.exports = {
         src: development + '/**/*.html',
         dest: development,
         options: {
-          removeComments: true,
-          removeCommentsFromCDATA: true,
-          collapseWhitespace: true,
-          removeAttributeQuotes: true,
+          removeComments: false,
+          removeCommentsFromCDATA: false,
+          collapseWhitespace: false,
+          removeAttributeQuotes: false,
           minifyJS: true,
           minifyCSS: true,
           processScripts: ['application/ld+json']
@@ -307,10 +307,10 @@ module.exports = {
         src: production + '/**/*.html',
         dest: production,
         options: {
-          removeComments: true,
-          removeCommentsFromCDATA: true,
-          collapseWhitespace: true,
-          removeAttributeQuotes: true,
+          removeComments: false,
+          removeCommentsFromCDATA: false,
+          collapseWhitespace: false,
+          removeAttributeQuotes: false,
           minifyJS: true,
           minifyCSS: true,
           processScripts: ['application/ld+json']

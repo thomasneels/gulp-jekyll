@@ -15,3 +15,6 @@ permalink: .htaccess
 </IfModule>
 
 AddType image/webp .webp
+
+Options +Includes
+AddHandler server-parsed .shtml .html .htm .js

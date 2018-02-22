@@ -37,7 +37,7 @@ $nodePath: "../../../node_modules/knacss/sass/";
 /* ---------------- */
 /*      KNACSS      */
 /* ---------------- */
-@import "../../../node_modules/knacss/sass/_vendor/reboot.css"; // Bootstrap reboot (basic reset)
+@import "../../../node_modules/knacss/sass/_vendor/reboot"; // Bootstrap reboot (basic reset)
 
 // WARNING : you should comment the following @import (variables)
 // and move variables file from knacss folder to your own project folder!
